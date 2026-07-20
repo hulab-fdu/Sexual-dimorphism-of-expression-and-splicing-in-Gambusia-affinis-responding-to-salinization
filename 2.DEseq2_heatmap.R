@@ -36,7 +36,7 @@ sampleTable=sampleTable[id$id,]
 colnames(count_table_female)==rownames(sampleTable)
 #-----------------#
 
-dds_female_count=DESeqDataSetFromMatrix(countData=count_table_female, colData=sampleTable, design = ~Salinity+Time)
+dds_female_count=DESeqDataSetFromMatrix(countData=count_table_female, colData=sampleTable, design = ~Time+Salinity)
 dds_female_count=DESeq(dds_female_count)
 female_result=results(dds_female_count, contrast = c("Salinity", "12ppt", "0ppt"))
 DEgenes_female=as.data.frame(female_result)
@@ -382,7 +382,7 @@ sampleTable=sampleTable[id$id,]
 colnames(count_table_male)==rownames(sampleTable)
 #-----------------#
 
-dds_male_count=DESeqDataSetFromMatrix(countData=count_table_male, colData=sampleTable, design = ~Salinity+Time)
+dds_male_count=DESeqDataSetFromMatrix(countData=count_table_male, colData=sampleTable, design = ~Time+Salinity)
 dds_male_count=DESeq(dds_male_count)
 male_result=results(dds_male_count, contrast = c("Salinity", "12ppt", "0ppt"))
 DEgenes_male=as.data.frame(male_result)
